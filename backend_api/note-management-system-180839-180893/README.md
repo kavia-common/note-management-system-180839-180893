@@ -9,7 +9,7 @@
 - API:
   - GET `/` -> welcome text
   - GET `/api/notes` -> list notes
-  - Swagger UI: GET `/docs` (redirects to `/swagger-ui.html`), API docs at `/api-docs`
+  - Swagger UI: GET `/docs` (redirects to `/swagger-ui/index.html`), API docs at `/v3/api-docs`
 - Database: In-memory H2 (see `application.properties`), console at `/h2-console`
 
 ### Running locally
