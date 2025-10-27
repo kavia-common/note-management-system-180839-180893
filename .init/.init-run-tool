@@ -1,0 +1,4 @@
+{
+    "command": "SERVER_PORT=<port> SERVER_ADDRESS=<host> ./gradlew bootRun",
+    "working_directory": "/home/kavia/workspace/code-generation/note-management-system-180839-180893/backend_api"
+}
