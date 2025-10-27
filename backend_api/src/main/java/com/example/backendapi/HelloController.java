@@ -13,16 +13,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Tag(name = "Hello Controller", description = "Basic endpoints for backendapi")
 public class HelloController {
     
+    // PUBLIC_INTERFACE
     @GetMapping("/")
     @Operation(summary = "Welcome endpoint", description = "Returns a welcome message")
     public String hello() {
+        /** Basic liveness response for root path. */
         return "Hello, Spring Boot! Welcome to backendapi";
     }
     
+    // PUBLIC_INTERFACE
     @GetMapping("/docs")
     @Operation(summary = "API Documentation", description = "Redirects to Swagger UI preserving original scheme/host/port")
     public RedirectView docs(HttpServletRequest request) {
-        // Build an absolute URL based on the incoming request, honoring X-Forwarded-* headers
+        /** Redirect to Swagger UI with correct external scheme/host/port when behind a proxy. */
         String target = UriComponentsBuilder
                 .fromHttpRequest(new ServletServerHttpRequest(request))
                 .replacePath("/swagger-ui.html")
@@ -36,15 +39,19 @@ public class HelloController {
         return rv;
     }
     
+    // PUBLIC_INTERFACE
     @GetMapping("/health")
-    @Operation(summary = "Health check", description = "Returns application health status")
+    @Operation(summary = "Health check", description = "Returns application health status as plain text 'OK'")
     public String health() {
+        /** Simple health indicator for external probes. Prefer /actuator/health for detailed status. */
         return "OK";
     }
     
+    // PUBLIC_INTERFACE
     @GetMapping("/api/info")
     @Operation(summary = "Application info", description = "Returns application information")
     public String info() {
+        /** Application metadata endpoint. */
         return "Spring Boot Application: backendapi";
     }
 } 
